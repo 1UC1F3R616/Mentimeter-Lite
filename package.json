@@ -1,0 +1,44 @@
+{
+  "name": "mentimeterlite",
+  "version": "1.0.0",
+  "description": "A Real Time Polling Progressive Web App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --runInBand --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1UC1F3R616/Mentimeter-Lite.git"
+  },
+  "keywords": [
+    "mentimeter",
+    "real-time",
+    "iwp",
+    "web-app",
+    "polling",
+    "voting"
+  ],
+  "author": "Kush Choudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1UC1F3R616/Mentimeter-Lite/issues"
+  },
+  "homepage": "https://github.com/1UC1F3R616/Mentimeter-Lite#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
+    "sanitize-html": "^2.0.0",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^5.0.0"
+  }
+}
