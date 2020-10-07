@@ -13,3 +13,6 @@
 # When to use?
 - For Real Time Opinion Poll
 - For Real Time Quiz
+
+# Flow Chart
+![Flow Chart](/images/Flow%20Chart%20Mentimeter-Lite.png)
