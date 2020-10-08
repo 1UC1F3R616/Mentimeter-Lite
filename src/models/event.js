@@ -14,6 +14,8 @@ const eventSchema = new mongoose.Schema({
     description: {
         type: String,
     }
+}, {
+    timestamps : true
 })
 
 const Event = mongoose.model('Event', eventSchema)
