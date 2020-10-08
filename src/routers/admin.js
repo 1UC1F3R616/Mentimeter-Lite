@@ -1,14 +1,14 @@
 const express = require('express')
 const Admin = require('../models/admin')
-
+const authAdmin = require('../middleware/authAdmin')
 
 app = express()
 app.use(express.json()) // for parsing application/json
 
 router = new express.Router()
 
-router.get('/test', (req, res) => {
-    res.json({message: '123'})
+router.get('/admin', (req, res) => {
+    res.json({message: 'Feeling like a hacker?'})
 })
 
 // signup route for admin
@@ -40,4 +40,10 @@ router.post('/signin/admin', async (req, res) => {
     }
 })
 
+
+
+
+
+
+////////////////////////export///////////////////////
 module.exports = router

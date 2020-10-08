@@ -5,9 +5,11 @@ app = express()
 
 // Import Routes
 const adminRouter = require('./routers/admin')
+const userRouter = require('./routers/user')
 
 // Registering Routes
 app.use(adminRouter)
+app.use(userRouter)
 
 
 // Running Server
