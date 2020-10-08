@@ -29,8 +29,26 @@ router.post('/create/event', authUser, async (req, res) => {
 })
 
 // fetch past events: get
+router.get('/events', authUser, async (req, res) => {
+    try {
+        const events = await Event.find({ user_id : req.user._id})
+        res.status(200).json(events)
+    }
+    catch (e) {
+        res.status(400).json({err: e.message})
+    }
+})
 
 // fetch this event: get
+router.get('/events/:id', authUser, async (req, res) => {
+    try {
+        const event = await Event.find({ user_id : req.user._id, _id : req.params.id})
+        res.status(200).json(event)
+    }
+    catch (e) {
+        res.status(400).json({err: e.message})
+    }
+})
 
 ////////////////////////export///////////////////////
 module.exports = router
