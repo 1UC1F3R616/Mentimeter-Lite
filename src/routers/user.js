@@ -1,7 +1,5 @@
 const express = require('express')
 const User = require('../models/user')
-const authUser = require('../middleware/authUser')
-const Event = require('../models/event')
 
 app = express()
 app.use(express.json())
@@ -40,30 +38,6 @@ router.post('/signin/user', async (req, res) => {
         res.status(400).json({error: err.message})
     }
 })
-
-// create event: post
-router.post('/create/event', authUser, async (req, res) => {
-    // console.log(req.body)
-    // res.send("authorized")
-    try {
-        const event = new Event({user_id:req.user._id, name:req.body.name, description:req.body.description})
-        await event.save()
-
-        res.status(201).json(event)
-    }
-    catch(e) {
-        res.status(400).json({err: e.message})
-    }
-})
-
-// create question: post
-
-// create option: post
-
-// fetch past events: get
-
-// fetch this event: get
-
 
 
 ////////////////////////export///////////////////////

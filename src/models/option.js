@@ -13,7 +13,7 @@ const optionSchema = new mongoose.Schema({
         required: true
     },
     number : {
-        type : String,
+        type : Number,
         required : true
     }
 }, {
