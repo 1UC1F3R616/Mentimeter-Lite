@@ -8,7 +8,7 @@ const authAdmin = async (req, res, next) => {
         const admin = await Admin.findOne({_id: decoded._id, 'tokens.token': token})
 
         if (!admin) {
-            throw new Error('Request failed')
+            throw new Error('Auth Request failed')
         }
 
         req.token = token

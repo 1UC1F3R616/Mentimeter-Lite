@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const eventSchema = new mongoose.Schema({
     user_id : {
-        type: ObjectId,
+        type: mongoose.ObjectId,
         required: true
     },
     name : {
