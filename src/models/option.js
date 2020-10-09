@@ -17,6 +17,10 @@ const optionSchema = new mongoose.Schema({
     number : {
         type : Number,
         required : true
+    },
+    votes : {
+        type: Number,
+        default : 0
     }
 }, {
     timestamps : true
