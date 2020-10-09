@@ -26,6 +26,8 @@ router.post('/create/question', authUser, async (req, res) => {
     }
 })
 
+// fetch question options: get
+
 
 ////////////////////////export///////////////////////
 module.exports = router
