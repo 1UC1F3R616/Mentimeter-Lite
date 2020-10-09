@@ -5,7 +5,8 @@ const bcrypt = require('bcryptjs')
 const eventSchema = new mongoose.Schema({
     user_id : {
         type: mongoose.ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
     },
     name : {
         type: String,

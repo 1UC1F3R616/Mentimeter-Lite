@@ -52,3 +52,11 @@ router.get('/events/:id', authUser, async (req, res) => {
 
 ////////////////////////export///////////////////////
 module.exports = router
+
+// const test = async () => {
+//     const event = await Event.findById({_id: '5f80cfd579337d4bf85324af'})
+//     await event.populate('user_id').execPopulate()
+//     console.log(event.user_id)
+// }
+
+// test()

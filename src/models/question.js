@@ -9,7 +9,8 @@ const jwt = require('jsonwebtoken')
 const questionSchema = new mongoose.Schema({
     event_id : {
         type: mongoose.ObjectId,
-        required: true
+        required: true,
+        ref: 'Event'
     },
     statement : {
         type : String,
