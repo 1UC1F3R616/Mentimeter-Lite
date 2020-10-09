@@ -1,3 +1,6 @@
+// event_id and question_number must be a compound key else many questions
+// can be created with the same question number
+
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
@@ -19,6 +22,9 @@ const questionSchema = new mongoose.Schema({
 }, {
     timestamps : true
 })
+
+// composite key
+questionSchema.index({'event_id': 1, 'number': 1}, {unique: true});
 
 const Question = mongoose.model('Question', questionSchema)
 module.exports = Question
