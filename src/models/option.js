@@ -2,9 +2,7 @@
 // can be created with the same option number
 
 const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+
 
 const optionSchema = new mongoose.Schema({
     question_id: { 

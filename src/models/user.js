@@ -3,7 +3,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-
+const Event = require('./event')
 
 const userSchema = new mongoose.Schema({
     username : {
@@ -96,6 +96,14 @@ userSchema.pre('save', async function (next) {
     if (user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 8)
     }
+    next()
+})
+
+// If user is deleted then delete it's Events also
+userSchema.pre('remove', async function (next) {
+    const user = this
+
+    await Event.deleteMany({ user_id: user._id })
     next()
 })
 

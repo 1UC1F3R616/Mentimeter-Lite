@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-const bcrypt = require('bcryptjs')
+
+const Question = require('./question')
 
 const eventSchema = new mongoose.Schema({
     user_id : {
@@ -17,6 +18,14 @@ const eventSchema = new mongoose.Schema({
     }
 }, {
     timestamps : true
+})
+
+// If event is deleted then delete it's questions also
+eventSchema.pre('remove', async function (next) {
+    const event = this
+
+    await Question.deleteMany({ event_id: event._id })
+    next()
 })
 
 const Event = mongoose.model('Event', eventSchema)

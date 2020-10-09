@@ -2,9 +2,8 @@
 // can be created with the same question number
 
 const mongoose = require('mongoose')
-const validator = require('validator')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+
+const Option = require('./option')
 
 const questionSchema = new mongoose.Schema({
     event_id : {
@@ -26,6 +25,14 @@ const questionSchema = new mongoose.Schema({
 
 // composite key
 questionSchema.index({'event_id': 1, 'number': 1}, {unique: true});
+
+// If question is deleted then delete it's options also
+questionSchema.pre('remove', async function (next) {
+    const question = this
+
+    await Option.deleteMany({ question_id: question._id })
+    next()
+})
 
 const Question = mongoose.model('Question', questionSchema)
 module.exports = Question
