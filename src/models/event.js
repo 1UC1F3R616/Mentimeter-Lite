@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const date = require('date-and-time');
 
 const Question = require('./question')
 
@@ -15,6 +15,14 @@ const eventSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+    },
+    otp: {
+        type: String,
+        required: true
+    },
+    valid_upto_date: {
+        type: Date,
+        default: date.addMinutes(new Date(), 30)
     }
 }, {
     timestamps : true
