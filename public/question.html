@@ -51,6 +51,72 @@
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
     </style>
+
+
+    <script>
+        $(document).ready(() => {
+
+            // When a new question is added, then only question number matters
+            // Options can be added directly, this is done by listening on that item when a click is made to that option
+            // then add a noden before it
+
+            myStorage = window.localStorage;
+
+            token = myStorage.getItem('token')
+            event_id = myStorage.getItem('event_id')
+
+            document.querySelectorAll('.question').forEach(item => {
+                console.log('got a question')
+
+                item.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    // Now we find question_number, statement, options from this item by looping all childnodes and finding appropriate class
+                    console.log('A Question Form has been Submitted');
+
+                    options = []
+                    for (let i = 0; i < item.childNodes.length; i++) {
+
+                        if (item.childNodes[i].className == 'field') {
+
+                            for (let j = 0; j < item.childNodes[i].childNodes.length; j++) {
+
+                                let classList_ = item.childNodes[i].childNodes[j].classList
+                                if (classList_ != undefined) {
+                                    if (item.childNodes[i].childNodes[j].classList.contains('option'))
+                                        options.push(item.childNodes[i].childNodes[j].value)
+                                }
+
+                            }
+                        }
+                    }
+                    question_statement = document.querySelectorAll('.question div .statement')[0].value
+                    console.log(options)
+                    console.log(question_statement)
+
+                    var settings = {
+                        "url": "http://localhost:3000/create/question",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Authorization": token,
+                            "Content-Type": "application/json"
+                        },
+                        "data": JSON.stringify({ "event_id": event_id, "statement": question_statement, "number": 10 }),
+                    };
+
+                    $.ajax(settings).done(function (response) {
+                        console.log(response);
+                    }).fail(() => {
+                        console.log('Failed to submit a question')
+                    })
+
+                })
+            })
+
+        })
+    </script>
+
+
 </head>
 
 <body>
@@ -58,54 +124,63 @@
     also add some buttons for navigation -->
 
     <div class="mainContainer">
+
         <div class="container">
 
-            <div class="ui form">
-                <div class="field ui segment" style="margin-top: 2px">
+            <form class="ui form question">
+                <p class="question_number" style="visibility: hidden;">1</p>
+                <div class="field ui segment aboveQuestion" style="margin-top: 2px">
                     <a class="ui teal ribbon label">1) Question Statement</a>
-                    <textarea type="textarea" rows="3" cols="120" placeholder="Question Statement"></textarea>
+                    <textarea class="statement" type="textarea" rows="3" cols="120"
+                        placeholder="Question Statement"></textarea>
                 </div>
                 <div class="field">
-                    <a class="ui  label">1) Option Statement</a>
-                    <input type="text" placeholder="Option Statement">
+                    <a class="ui label">1) Option Statement</a>
+                    <input class="option" type="text" placeholder="Option Statement">
                 </div>
                 <div class="field">
-                    <a class="ui  label">2) Option Statement</a>
-                    <input type="text" placeholder="Option Statement">
+                    <a class="ui label">2) Option Statement</a>
+                    <input class="option" type="text" placeholder="Option Statement">
                 </div>
                 <br>
-                <button class="ui button primary"><i class="plus circle icon"></i>Add an Option</button
-                    class="ui button">
-
-            </div>
+                <button type="button" class="ui button secondary"><i class="plus circle icon"></i>Add an Option</button>
+                <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
+                <!-- <input type="submit" value="Submit" class="ui button primary"> -->
+                <br><br>
+                
+            </form>
         </div>
 
         <div class="container">
 
-            <div class="ui form">
-                <div class="field ui segment" style="margin-top: 2px">
+            <form class="ui form question">
+                <p class="question_number" style="visibility: hidden;">2</p>
+                <div class="field ui segment aboveQuestion" style="margin-top: 2px">
                     <a class="ui teal ribbon label">1) Question Statement</a>
-                    <textarea type="textarea" rows="3" cols="120" placeholder="Question Statement"></textarea>
+                    <textarea class="statement" type="textarea" rows="3" cols="120"
+                        placeholder="Question Statement"></textarea>
                 </div>
                 <div class="field">
-                    <a class="ui  label">1) Option Statement</a>
-                    <input type="text" placeholder="Option Statement">
+                    <a class="ui label">1) Option Statement</a>
+                    <input class="option" type="text" placeholder="Option Statement">
                 </div>
                 <div class="field">
-                    <a class="ui  label">2) Option Statement</a>
-                    <input type="text" placeholder="Option Statement">
+                    <a class="ui label">2) Option Statement</a>
+                    <input class="option" type="text" placeholder="Option Statement">
                 </div>
                 <br>
-                <button class="ui button primary"><i class="plus circle icon"></i>Add an Option</button
-                    class="ui button">
-
-            </div>
+                <button type="button" class="ui button secondary"><i class="plus circle icon"></i>Add an Option</button>
+                <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
+                <!-- <input type="submit" value="Submit" class="ui button primary"> -->
+                <br><br>
+                
+            </form>
         </div>
-
         <br>
-        <button class="ui button primary" style="margin-left: 43%; margin-bottom: 2%"><i
+        <button class="ui button secondary" style="margin-left: 43%; margin-bottom: 2%"><i
                 class="plus circle icon"></i>Add a Question</button class="ui button">
     </div>
+    
 
 </body>
 
