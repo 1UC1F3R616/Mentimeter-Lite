@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voters Page</title>
+</head>
+<body>
+    <h1>This is where socket.io work begins :)</h1>
+    <!-- We have access to below file because we have npm i socket.io -->
+    <script src='/socket.io/socket.io.js'></script>
+    
+
+    <div id="work"></div>
+
+    <form id="messageAll">
+        <input type="text">
+        <input type="submit" value="send">
+    </form>
+
+
+    <!-- Below file is where our client side socket code will lie, which is where they come to give otp and voting -->
+    <script src='./js/vote.js'></script>
+
+</body>
+</html>

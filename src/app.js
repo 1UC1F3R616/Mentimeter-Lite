@@ -1,8 +1,9 @@
 const express = require('express')
+const cors = require('cors');
 require('./db/mongoose')
 
 app = express()
-
+app.use(cors())
 
 
 // Import Routes

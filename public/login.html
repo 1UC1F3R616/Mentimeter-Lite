@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+
+    <script>
+        console.log('Script at login.html loaded')
+        $(document).ready(function () {
+            myStorage = window.localStorage;
+
+            $("#signupButton").click(() => {
+                let username = document.getElementById('usernameSignup').value
+                let password = document.getElementById('passwordSignup').value
+                let email = document.getElementById('emailSignup').value
+                let pp = document.getElementById('ppSignup').value
+
+                var settings = {
+                    "url": "http://localhost:3000/signup/user",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({ "username": username, "password": password, "email": email }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    let token = response.token;
+                    myStorage.setItem('token', `Bearer ${token}`)
+                    window.location.href = "http://localhost:3000/event.html";
+                }).fail(() => {
+                    console.log('Failed')
+                })
+            })
+
+            $("#loginButton").click(() => {
+                let password = document.getElementById('passwordLogin').value
+                let email = document.getElementById('emailLogin').value
+
+                var settings = {
+                    "url": "http://localhost:3000/signin/user",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({ "password": password, "email": email }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    let token = response.token;
+                    myStorage.clear();
+                    myStorage.setItem('token', `Bearer ${token}`)
+                    window.location.href = "http://localhost:3000/event.html";
+                }).fail(() => {
+                    console.log('Failed')
+                })
+            })
+        })
+    </script>
+
+
+</head>
+
+<body>
+    <div class="ui placeholder segment" style="margin: 20px">
+        <div class="ui two column very relaxed stackable grid">
+            <div class="column">
+                <div class="ui form">
+                    <div class="field">
+                        <label>Email</label>
+                        <div class="envelope open  icon">
+                            <input type="email" placeholder="Email" id="emailLogin" required>
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="ui left icon input">
+                            <input type="password" required id="passwordLogin">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui blue submit button" id="loginButton">Login</div>
+                </div>
+            </div>
+            <!-- Signup Form -->
+            <div class="column">
+                <div class="ui form">
+                    <div class="field">
+                        <label>Username</label>
+                        <div class="ui left icon input">
+                            <input type="text" placeholder="Username" id="usernameSignup" required>
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <div class="ui left icon input">
+                            <input type="email" placeholder="Email" id="emailSignup" required>
+                            <i class="envelope open  icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="ui left icon input">
+                            <input type="password" id="passwordSignup" required>
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Profile Picture</label>
+                        <div class="ui left icon input">
+                            <input type="file" placeholder="Profile Picture" id="ppSignup" required>
+                            <i class="id card icon"></i>
+                        </div>
+                    </div>
+                    <div class="ui blue submit button" id="signupButton">Signup</div>
+                </div>
+            </div>
+        </div>
+        <div class="ui vertical divider">
+            Or
+        </div>
+    </div>
+</body>
+
+</html>
