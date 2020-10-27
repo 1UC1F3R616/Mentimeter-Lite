@@ -58,7 +58,7 @@
 
             // When a new question is added, then only question number matters
             // Options can be added directly, this is done by listening on that item when a click is made to that option
-            // then add a noden before it
+            // then add a node before it
 
             myStorage = window.localStorage;
 
@@ -73,25 +73,35 @@
                     // Now we find question_number, statement, options from this item by looping all childnodes and finding appropriate class
                     console.log('A Question Form has been Submitted');
 
-                    options = []
+                    options = [] // .field.option
+                    question_statement = '' // .field.statement
+                    question_number = '' // .question_number
                     for (let i = 0; i < item.childNodes.length; i++) {
 
-                        if (item.childNodes[i].className == 'field') {
+                        if (item.childNodes[i].className == 'question_number') {
+                            question_number = item.childNodes[i].textContent; // question number here
+                        }
+
+                        if (item.childNodes[i].classList != undefined && item.childNodes[i].classList.contains('field')) {
 
                             for (let j = 0; j < item.childNodes[i].childNodes.length; j++) {
 
                                 let classList_ = item.childNodes[i].childNodes[j].classList
                                 if (classList_ != undefined) {
                                     if (item.childNodes[i].childNodes[j].classList.contains('option'))
-                                        options.push(item.childNodes[i].childNodes[j].value)
+                                        options.push(item.childNodes[i].childNodes[j].value) // options here
+                                    if (item.childNodes[i].childNodes[j].classList.contains('statement'))
+                                        question_statement = item.childNodes[i].childNodes[j].value // question statement here
                                 }
 
                             }
                         }
                     }
-                    question_statement = document.querySelectorAll('.question div .statement')[0].value
-                    console.log(options)
-                    console.log(question_statement)
+                    // question_statement = document.querySelectorAll('.question div .statement')[0].value
+                    
+                    console.log(question_number, question_statement, options)
+
+                    // firstly question is created with api call, then all it's options are created
 
                     var settings = {
                         "url": "http://localhost:3000/create/question",
@@ -101,7 +111,7 @@
                             "Authorization": token,
                             "Content-Type": "application/json"
                         },
-                        "data": JSON.stringify({ "event_id": event_id, "statement": question_statement, "number": 10 }),
+                        "data": JSON.stringify({ "event_id": event_id, "statement": question_statement, "number": question_number }),
                     };
 
                     $.ajax(settings).done(function (response) {
@@ -128,8 +138,9 @@
         <div class="container">
 
             <form class="ui form question">
+                <!-- question number is here, hidden. Extract this also -->
                 <p class="question_number" style="visibility: hidden;">1</p>
-                <div class="field ui segment aboveQuestion" style="margin-top: 2px">
+                <div class="field ui segment" style="margin-top: 2px">
                     <a class="ui teal ribbon label">1) Question Statement</a>
                     <textarea class="statement" type="textarea" rows="3" cols="120"
                         placeholder="Question Statement"></textarea>
