@@ -26,8 +26,10 @@
         console.log('Script at login.html loaded')
         $(document).ready(function () {
             myStorage = window.localStorage;
+            
 
             $("#signupButton").click(() => {
+                myStorage.clear()
                 let username = document.getElementById('usernameSignup').value
                 let password = document.getElementById('passwordSignup').value
                 let email = document.getElementById('emailSignup').value

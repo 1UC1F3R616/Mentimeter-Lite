@@ -139,6 +139,30 @@
 
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+                        // Now Iterate over the options array and make that number of api calls to save those options
+
+
+                        for (let k = 0; k < options.length; k++) {
+                            var settings = {
+                                "url": "http://localhost:3000/create/option",
+                                "method": "POST",
+                                "timeout": 0,
+                                "headers": {
+                                    "Authorization": token,
+                                    "Content-Type": "application/json"
+                                },
+                                "data": JSON.stringify({ "question_id": response._id, "statement": options[k], "number": k + 1 }),
+                            };
+
+                            $.ajax(settings).done(function (response) {
+                                console.log(response);
+                                console.log(`Option ${k} has been added for ${response.statement}`)
+                            }).fail(() => {
+                                console.log('Failed to add an option')
+                            });
+                        }
+
+                        // Here is the ending of this options adding
                     }).fail(() => {
                         console.log('Failed to submit a question')
                     })
@@ -246,6 +270,33 @@
 
                     $.ajax(settings).done(function (response) {
                         console.log(response);
+
+                        // Now Iterate over the options array and make that number of api calls to save those options
+
+
+                        for (let k = 0; k < options.length; k++) {
+                            var settings = {
+                                "url": "http://localhost:3000/create/option",
+                                "method": "POST",
+                                "timeout": 0,
+                                "headers": {
+                                    "Authorization": token,
+                                    "Content-Type": "application/json"
+                                },
+                                "data": JSON.stringify({ "question_id": response._id, "statement": options[k], "number": k + 1 }),
+                            };
+
+                            $.ajax(settings).done(function (response) {
+                                console.log(response);
+                                console.log(`Option ${k} has been added for ${response.statement}`)
+                            }).fail(() => {
+                                console.log('Failed to add an option')
+                            });
+                        }
+
+                        // Here is the ending of this options adding
+
+
                     }).fail(() => {
                         console.log('Failed to submit a question')
                     })
