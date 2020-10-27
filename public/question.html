@@ -58,6 +58,39 @@
         // when we add a question then it has to be bind with an event listener. Question button is pre binded, no concern for it
         $(document).ready(() => {
 
+            // registering question Button
+            document.getElementsByClassName('questionButton')[0].addEventListener('click', () => {
+                console.log('Adding a question')
+                addHere = document.getElementById('addQuestion')
+                addHere.insertAdjacentHTML('beforebegin', `<div class="container">
+
+<form class="ui form question">
+    <!-- question number is here, hidden. Extract this also -->
+    <p class="question_number" style="visibility: hidden;">${document.querySelectorAll('.question').length + 1}</p>
+    <div class="field ui segment" style="margin-top: 2px">
+        <a class="ui teal ribbon label">${document.querySelectorAll('.question').length + 1}) Question Statement</a>
+        <textarea class="statement" type="textarea" rows="3" cols="120"
+            placeholder="Question Statement"></textarea>
+    </div>
+    <div class="field">
+        <a class="ui label">1) Option Statement</a>
+        <input class="option" type="text" placeholder="Option Statement">
+    </div>
+    <div class="field">
+        <a class="ui label">2) Option Statement</a>
+        <input class="option" type="text" placeholder="Option Statement">
+    </div>
+    <div class="appendOptionHere" style="visibility: hidden"></div>
+    <br>
+    <button type="button" class="ui button secondary optionAdd"><i class="plus circle icon"></i>Add an Option</button>
+    <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
+    <!-- <input type="submit" value="Submit" class="ui button primary"> -->
+    <br><br>
+    
+</form>
+</div>`)
+            })
+
             // When a new question is added, then only question number matters
             // Options can be added directly, this is done by listening on that item when a click is made to that option
             // then add a node before it
@@ -196,34 +229,11 @@
             </form>
         </div>
 
-        <div class="container">
-
-            <form class="ui form question">
-                <p class="question_number" style="visibility: hidden;">2</p>
-                <div class="field ui segment aboveQuestion" style="margin-top: 2px">
-                    <a class="ui teal ribbon label">1) Question Statement</a>
-                    <textarea class="statement" type="textarea" rows="3" cols="120"
-                        placeholder="Question Statement"></textarea>
-                </div>
-                <div class="field">
-                    <a class="ui label">1) Option Statement</a>
-                    <input class="option" type="text" placeholder="Option Statement">
-                </div>
-                <div class="field">
-                    <a class="ui label">2) Option Statement</a>
-                    <input class="option" type="text" placeholder="Option Statement">
-                </div>
-                <br>
-                <button type="button" class="ui button secondary"><i class="plus circle icon"></i>Add an Option</button>
-                <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
-                <!-- <input type="submit" value="Submit" class="ui button primary"> -->
-                <br><br>
-                
-            </form>
-        </div>
+        
+        <div id="addQuestion" style="visibility: hidden;"></div>
         <br>
-        <button class="ui button secondary" style="margin-left: 43%; margin-bottom: 2%"><i
-                class="plus circle icon"></i>Add a Question</button class="ui button">
+        <div class="questionButton"><button class="ui button secondary" style="margin-left: 43%; margin-bottom: 2%"><i
+                class="plus circle icon"></i>Add a Question</button class="ui button"></div>
     </div>
     
 
