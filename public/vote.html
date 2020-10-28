@@ -28,7 +28,7 @@
             width: 85%;
             height: 75%;
             margin: auto;
-            margin-top: 6.25%;
+            margin-top: .75%;
             overflow-y: scroll;
         }
 
@@ -138,8 +138,13 @@
     <!-- We have access to below file because we have npm i socket.io -->
     <script src='/socket.io/socket.io.js'></script>
 
+    <div style="margin-bottom: 2%;"></div>
+    <!-- otp and event title -->
+    <div id="values_vote"></div>
+
+
     <div class="mainContainer">
-        
+
         <!-- <div class="container">
             <br>
             <div class="ui raised segment" style="margin-top: 2px">
@@ -156,7 +161,7 @@
             <br>
         </div> -->
 
-        
+
 
     </div>
 
@@ -170,6 +175,23 @@
 
     <!-- Below file is where our client side socket code will lie, which is where they come to give otp and voting -->
     <script src='./js/vote.js'></script>
+
+    <script>
+        var settings = {
+            "url": `http://localhost:3000/events/otp/${otp}`,
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function (response) {
+            // console.log(response);
+            // otp_ = response.otp;
+            title = response.name;
+            console.log(response)
+            document.getElementById('values_vote').innerHTML = `<h1 style="display: inline; margin-left: 13%; color: purple">OTP: ${otp}</h1>
+         <h1 style="display: inline; margin-left: 22%; color:purple">Event: ${title}</h1>`
+        });
+    </script>
 
 </body>
 

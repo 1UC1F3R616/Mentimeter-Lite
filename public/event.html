@@ -23,6 +23,10 @@
 
 
     <style>
+        body {
+            background: rgb(239, 245, 247);
+        }
+
         .righty {
             float: right;
         }
@@ -55,6 +59,15 @@
             margin-top: 200px;
             margin-left: 320px;
         }
+
+        img {
+            height: 30px;
+            color: rgba(9, 9, 121, 1);
+            fill: rgba(9, 9, 121, 1);
+            position: absolute;
+            top: 2%;
+            left: 1%;
+        }
     </style>
 
 
@@ -62,6 +75,10 @@
         console.log('Script from event.html has loaded');
 
         myStorage = window.localStorage;
+
+        if (myStorage.getItem('token') == null) {
+            window.location.href='/'
+        }
 
         $(document).ready(() => {
             $('#createEventButton').click(() => {
@@ -103,9 +120,11 @@
 
 </head>
 
-<body style="background-image: url('https://wonderfulengineering.com/wp-content/uploads/2014/09/blue-wallpaper-27.jpg');"> 
+<body> 
 <!-- <body style="background-color: #F5F5F5;"> -->
     <!-- Create Polling or click to view previously created polls -->
+
+    <a href="/"><img src="./css/polling-blue.svg" alt="Brand"></a>
 
     <div class="ui  segment" style="float:left !important" id="createEvent">
         <div class="ui  form">
@@ -157,10 +176,10 @@
                 document.getElementById('table_body').insertAdjacentHTML('afterbegin', `<tr>
     <td>
         <div class="card">
-            <div class="content">
-                <div class="header" style="margin-left: 1px">${title}</div>
+            <div class="content" style="background-color: lightblue">
+                <div class="header" style="margin-left: 1px; background-color: teal ">${title}</div>
                 <br>
-                <div class="description" style="margin-left: 1px">
+                <div class="description" style="margin-left: 1px; background-color: lightblue">
                     ${description}
                 </div>
                 <br>

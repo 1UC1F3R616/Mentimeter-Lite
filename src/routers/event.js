@@ -92,6 +92,18 @@ router.get("/events/:id", authUser, async (req, res) => {
     }
 });
 
+// fetch event by otp
+router.get("/events/otp/:otp", async (req, res) => {
+    try {
+        const event = await Event.findOne({
+            otp: req.params.otp
+        });
+        res.status(200).json(event);
+    } catch (e) {
+        res.status(400).json({ err: e.message });
+    }
+});
+
 // fetch all questions with options and return json when an event otp is provided
 router.get('/events/questions/:otp', async (req, res) => {
     try {

@@ -27,6 +27,9 @@
         $(document).ready(function () {
             myStorage = window.localStorage;
 
+            if (myStorage.getItem('token')) {
+                window.location.href = "/event.html";
+            }
 
             $("#signupButton").click(() => {
                 myStorage.clear()
