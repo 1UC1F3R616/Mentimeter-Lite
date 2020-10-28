@@ -27,5 +27,22 @@ router.post('/create/option', authUser, async (req, res) => {
     }
 })
 
+// give vote
+router.get('/upvote/option/:id', async (req, res) => {
+    try {
+        const option_ = await Option.findOne({_id: req.params.id})
+        
+        vote = option_.votes + 1
+
+        await Option.updateOne({_id: req.params.id}, {votes: vote })
+        console.log('Yes got an option with this id for voting')
+
+        res.status(200).send({'votes': vote})
+        
+    } catch(e) {
+        res.status(400).json({err: e.message})
+    }
+})
+
 ////////////////////////export///////////////////////
 module.exports = router

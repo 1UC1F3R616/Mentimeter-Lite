@@ -2,6 +2,8 @@ const express = require("express");
 const date = require("date-and-time");
 
 const Event = require("../models/event");
+const Question = require("../models/question");
+const Option = require("../models/option");
 
 const authUser = require("../middleware/authUser");
 
@@ -89,6 +91,42 @@ router.get("/events/:id", authUser, async (req, res) => {
         res.status(400).json({ err: e.message });
     }
 });
+
+// fetch all questions with options and return json when an event otp is provided
+router.get('/events/questions/:otp', async (req, res) => {
+    try {
+        const event = await Event.findOne({otp: req.params.otp})
+        
+        if (event == null) {
+            console.log(`This otp is null ${req.params.otp}`)
+            res.status(404).json({})
+        }
+        
+        else {
+            const questions = await Question.find({'event_id': event._id}) // Array of questions
+
+        let result = {}
+
+        for (let i=0; i<questions.length; i++) {
+            options = await Option.find({'question_id': questions[i]._id})
+
+            result[questions[i].number] = {'question': questions[i]}
+
+            result[questions[i].number]['options'] = []
+            for (let j=0; j<options.length; j++) {
+                // options.push(options[j])
+                result[questions[i].number]['options'].push(options[j])
+            }
+        }
+
+        res.status(200).send(result)
+        }
+        
+        
+    } catch (e) {
+        res.status(400).json({ err: e.message });
+    }
+})
 
 ////////////////////////export///////////////////////
 module.exports = router;

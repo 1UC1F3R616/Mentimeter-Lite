@@ -29,11 +29,10 @@
             height: 75%;
             margin: auto;
             margin-top: 6.25%;
-            overflow-y: scroll;
         }
 
         .mainContainer:hover {
-            box-shadow: 0 8px 16px 0 rgba(109, 245, 75, 0.726);
+            box-shadow: 0 8px 16px 0 rgba(68, 38, 241, 0.726);
         }
 
         .container {
@@ -45,7 +44,6 @@
             margin-top: 2%;
             margin-bottom: 2%;
             padding: 2px 16px;
-            overflow-y: scroll;
         }
 
         .container:hover {
@@ -116,7 +114,7 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: rgb(12, 230, 12);
+            background: blue;
             transition: all .35s;
         }
 
@@ -139,25 +137,15 @@
     <script src='/socket.io/socket.io.js'></script>
 
     <div class="mainContainer">
-        
-        <!-- <div class="container">
-            <br>
-            <div class="ui raised segment" style="margin-top: 2px">
-                <div class="ui label">Q 1</div>
-                <h3>Question Statement Goes here Question Statement Goes hereQuestion Statement Goes hereQuestion Statement Goes here
-                    Question Statement Goes here
-                </h3>
+        <h1 id="otpHead">Enter the Event OTP</h1>
+        <form id="otpBox">
+            <input type="text" size="26" class="ui raised input" id="otp">
+            <br><br>
+            <!-- <button class="ui button" id="otpButton">JOIN</button> -->
+            <div class="wrapper" id="otpButton">
+                <a href="#"><span>JOIN</span></a>
             </div>
-            <div class="ui segment">
-                <div style="display:none;">1</div>
-                <h5>Option goes here Option goes here
-                </h5>
-            </div>
-            <br>
-        </div> -->
-
-        
-
+        </form>
     </div>
 
 
@@ -169,7 +157,7 @@
     <div id="message"></div>
 
     <!-- Below file is where our client side socket code will lie, which is where they come to give otp and voting -->
-    <script src='./js/vote.js'></script>
+    <script src='./js/otp.js'></script>
 
 </body>
 

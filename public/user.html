@@ -4,14 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live View</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script type="text/javascript" src="./js/chartjs-plugin-colorschemes.js"></script>
+
+    <style>
+        .mainContainer {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 85%;
+            height: 75%;
+            margin: auto;
+            margin-top: 6.25%;
+            overflow-y: scroll
+        }
+
+        .mainContainer:hover {
+            box-shadow: 0 8px 16px 0 rgba(68, 38, 241, 0.726);
+        }
+
+        .container {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 85%;
+            height: 75%;
+            overflow-y: scroll;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            padding: 2px 16px;
+            position: relative
+        }
+
+        .container:hover {
+            /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+            box-shadow: 0 8px 16px 0 rgba(68, 38, 241, 0.726);
+        }
+
+
+        
+    canvas {
+    display: block !important;
+    position: absolute !important;
+
+}
+
+    </style>
 </head>
 <body>
         <!-- We have access to below file because we have npm i socket.io -->
         <script src='/socket.io/socket.io.js'></script>
 
         <div id="result"></div>
-        
+
+        <!-- <div class="container">
+            <canvas id="chartjs-1" class="chartjs"></canvas>
+        </div> -->
+    
+
         <!-- Below file is where our client side socket code will lie, which is where they come to give otp and voting -->
         <script src='./js/user.js'></script>
+
 </body>
 </html>
