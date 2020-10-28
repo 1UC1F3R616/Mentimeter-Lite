@@ -94,7 +94,7 @@
 
                     window.location.href = "/question.html";
 
-                }).fail(()=> {
+                }).fail(() => {
                     console.log('Failed for creating event')
                 })
             })
@@ -103,7 +103,8 @@
 
 </head>
 
-<body style="background-color: #F5F5F5;">
+<body style="background-image: url('https://wonderfulengineering.com/wp-content/uploads/2014/09/blue-wallpaper-27.jpg');"> 
+<!-- <body style="background-color: #F5F5F5;"> -->
     <!-- Create Polling or click to view previously created polls -->
 
     <div class="ui  segment" style="float:left !important" id="createEvent">
@@ -132,125 +133,51 @@
     <!-- Cards with Event name, date, description, total vote count -->
 
     <table class="ui container">
-        <tbody>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header" style="margin-left: 1px">Event Title</div>
-                            <br>
-                            <div class="description" style="margin-left: 1px">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">Event Title</div>
-                            <br>
-                            <div class="description">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">Event Title</div>
-                            <br>
-                            <div class="description">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">Event Title</div>
-                            <br>
-                            <div class="description">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">Event Title</div>
-                            <br>
-                            <div class="description">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">Event Title</div>
-                            <br>
-                            <div class="description">
-                                Event Description goes here and is upto this length...
-                            </div>
-                            <br>
-                        </div>
-                        <div class="ui bottom attached button">
-                            <i class="hand point up outline icon"></i>
-                            22
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
+        <tbody id="table_body">
         </tbody>
     </table>
+
+    <script>
+        var settings = {
+            "url": "/events",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Authorization": window.localStorage.getItem('token')
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            for (let i=0; i<response.length; i++) {
+                title = response[i]['name'];
+                description = response[i]['description'];
+                otp = response[i]['otp']
+
+                document.getElementById('table_body').insertAdjacentHTML('afterbegin', `<tr>
+    <td>
+        <div class="card">
+            <div class="content">
+                <div class="header" style="margin-left: 1px">${title}</div>
+                <br>
+                <div class="description" style="margin-left: 1px">
+                    ${description}
+                </div>
+                <br>
+            </div>
+            <div class="ui bottom attached button">
+                <i class="hand point up outline icon"></i>
+                ${otp}
+            </div>
+        </div>
+    </td>
+</tr>`)
+            }
+        });
+    </script>
 
 </body>
 
 </html>
+
+
