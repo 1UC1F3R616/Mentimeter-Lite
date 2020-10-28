@@ -16,7 +16,7 @@ socket.on("vote_result", (json_data) => {
     console.log(json_data);
 
     var settings = {
-        url: `http://localhost:3000/events/questions/${otp}`,
+        url: `/events/questions/${otp}`,
         method: "GET",
         timeout: 0,
     };
@@ -84,7 +84,7 @@ socket.on("vote_result", (json_data) => {
 
 
 var settings = {
-    url: `http://localhost:3000/events/questions/${otp}`,
+    url: `/events/questions/${otp}`,
     method: "GET",
     timeout: 0,
 };

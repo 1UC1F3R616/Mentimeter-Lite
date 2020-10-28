@@ -12,7 +12,7 @@ mainContainer = document.getElementsByClassName("mainContainer")[0];
 
 if (otp_count > 1) {
     mainContainer.innerHTML = `<center><h1 style="color: red; padding-top: 10%">You Have Already Polled!</h1></center>`;
-    window.location.href = "http://localhost:3000/otp.html";
+    window.location.href = "/otp.html";
 }
 else {
     myStorage.setItem('voter_otp', `${otp} 2`)
@@ -20,7 +20,7 @@ else {
 
 var data;
 var settings = {
-    url: `http://localhost:3000/events/questions/${otp}`,
+    url: `/events/questions/${otp}`,
     method: "GET",
     timeout: 0,
 };

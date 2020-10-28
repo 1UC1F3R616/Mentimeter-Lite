@@ -127,7 +127,7 @@
                     // firstly question is created with api call, then all it's options are created
 
                     var settings = {
-                        "url": "http://localhost:3000/create/question",
+                        "url": "/create/question",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
@@ -144,7 +144,7 @@
 
                         for (let k = 0; k < options.length; k++) {
                             var settings = {
-                                "url": "http://localhost:3000/create/option",
+                                "url": "/create/option",
                                 "method": "POST",
                                 "timeout": 0,
                                 "headers": {
@@ -258,7 +258,7 @@
                     // firstly question is created with api call, then all it's options are created
 
                     var settings = {
-                        "url": "http://localhost:3000/create/question",
+                        "url": "/create/question",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
@@ -276,7 +276,7 @@
 
                         for (let k = 0; k < options.length; k++) {
                             var settings = {
-                                "url": "http://localhost:3000/create/option",
+                                "url": "/create/option",
                                 "method": "POST",
                                 "timeout": 0,
                                 "headers": {
@@ -392,7 +392,7 @@
 
     <br><br>
     <button class="ui button green" style="margin-left: 666px; padding-left: 25px;padding-right:28px;">
-        <a href="http://localhost:3000/user.html">Start Polling</a><i class="chevron circle right icon" style="padding-left: 10px; transition: padding-left 1s;" id="startEffect"></i>
+        <a href="/user.html">Start Polling</a><i class="chevron circle right icon" style="padding-left: 10px; transition: padding-left 1s;" id="startEffect"></i>
     </button>
 
     

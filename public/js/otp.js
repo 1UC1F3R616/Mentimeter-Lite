@@ -34,7 +34,7 @@ socket.on('join_result', (json_data) => {
             myStorage.setItem('voter_otp', `${json_data['otp']} 1`)
         }
 
-        window.location.href='http://localhost:3000/vote.html'
+        window.location.href='/vote.html'
     }
     else {
         console.log(`Fail ${status_code}`)

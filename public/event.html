@@ -73,7 +73,7 @@
                 let token = myStorage.getItem('token');
 
                 var settings = {
-                    "url": "http://localhost:3000/create/event",
+                    "url": "/create/event",
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
@@ -92,7 +92,7 @@
                     myStorage.setItem('event_description', response.description);
                     myStorage.setItem('otp', response.otp)
 
-                    window.location.href = "http://localhost:3000/question.html";
+                    window.location.href = "/question.html";
 
                 }).fail(()=> {
                     console.log('Failed for creating event')
