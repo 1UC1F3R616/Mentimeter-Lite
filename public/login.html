@@ -26,7 +26,7 @@
         console.log('Script at login.html loaded')
         $(document).ready(function () {
             myStorage = window.localStorage;
-            
+
 
             $("#signupButton").click(() => {
                 myStorage.clear()
@@ -82,75 +82,206 @@
         })
     </script>
 
-<style>
-    body {
-        background-image: url('https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg?size=626&ext=jpg') !important;
-    }
-</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat|Quicksand');
+
+        * {
+            font-family: 'quicksand', Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            height: 100vh;
+            overflow: hidden
+        }
+
+        .form-modal {
+            position: relative;
+            width: 450px;
+            height: auto;
+            margin-top: 4em;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+
+            box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1)
+        }
+
+        .form-modal button {
+            cursor: pointer;
+            position: relative;
+            text-transform: capitalize;
+            font-size: 1em;
+            z-index: 2;
+            outline: none;
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        .form-modal .btn {
+
+            border: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 0.8em 1em 0.8em 1em !important;
+            transition: 0.5s;
+            border: 1px solid #ebebeb;
+            margin-bottom: 0.5em;
+            margin-top: 0.5em;
+        }
+
+        .form-modal .login,
+        .form-modal .signup {
+            background: rgba(9, 9, 121, 1);
+            color: #fff;
+        }
+
+        .form-toggle button {
+            width: 50%;
+            float: left;
+            padding: 1.5em;
+            margin-bottom: 1.5em;
+            border: none;
+            transition: 0.2s;
+            font-size: 1.1em;
+            font-weight: bold;
+
+        }
+
+        #login-toggle {
+            background: rgba(9, 9, 121, 1);
+            color: #ffff;
+        }
+
+        .form-modal form {
+            position: relative;
+            width: 90%;
+            height: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #login-form,
+        #signup-form {
+            position: relative;
+            width: 100%;
+            height: auto;
+            padding-bottom: 1em;
+        }
+
+        #signup-form {
+            display: none;
+        }
+
+
+        #login-form button,
+        #signup-form button {
+            width: 100%;
+            margin-top: 0.5em;
+            padding: 0.6em;
+        }
+
+        .form-modal input {
+            position: relative;
+            width: 100%;
+            font-size: 1em;
+            padding: 1.2em 1.7em 1.2em 1.7em;
+            margin-top: 0.6em;
+            margin-bottom: 0.6em;
+            border: none;
+            background: #ebebeb;
+            outline: none;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .form-modal input:focus,
+        .form-modal input:active {
+            transform: scaleX(1.02);
+        }
+
+        .form-modal input::-webkit-input-placeholder {
+            color: #222;
+        }
+
+        nav {
+            height: 10vh;
+            padding: 20px 50px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 30px;
+            color: rgba(9, 9, 121, 1);
+            fill: rgba(9, 9, 121, 1);
+        }
+
+        nav a {
+            color: rgba(9, 9, 121, 1);
+            text-decoration: none;
+        }
+
+        nav i {
+            color: rgba(9, 9, 121, 1) !important;
+            fill: rgba(9, 9, 121, 1) !important;
+        }
+    </style>
 
 </head>
 
 <body>
-    <div class="ui placeholder segment" style="margin: 20px; margin-top: 170px">
-        <div class="ui two column very relaxed stackable grid">
-            <div class="column">
-                <div class="ui form">
-                    <div class="field">
-                        <label>Email</label>
-                        <div class="ui left icon input">
-                            <input type="email" placeholder="Email" id="emailLogin" required>
-                            <i class="envelope open icon"></i>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <div class="ui left icon input">
-                            <input type="password" required id="passwordLogin">
-                            <i class="lock icon"></i>
-                        </div>
-                    </div>
-                    <div class="ui blue submit button" id="loginButton">Login</div>
-                </div>
-            </div>
-            <!-- Signup Form -->
-            <div class="column">
-                <div class="ui form">
-                    <div class="field">
-                        <label>Username</label>
-                        <div class="ui left icon input">
-                            <input type="text" placeholder="Username" id="usernameSignup" required>
-                            <i class="user icon"></i>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Email</label>
-                        <div class="ui left icon input">
-                            <input type="email" placeholder="Email" id="emailSignup" required>
-                            <i class="envelope open  icon"></i>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <div class="ui left icon input">
-                            <input type="password" id="passwordSignup" required>
-                            <i class="lock icon"></i>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Profile Picture</label>
-                        <div class="ui left icon input">
-                            <input type="file" placeholder="Profile Picture" id="ppSignup" required>
-                            <i class="id card icon"></i>
-                        </div>
-                    </div>
-                    <div class="ui blue submit button" id="signupButton">Signup</div>
-                </div>
-            </div>
+    <nav>
+        <a href="/"><img src="./css/polling-blue.svg" alt="Brand"></a>
+
+        <a target="_blank" href="https://github.com/1UC1F3R616/Mentimeter-Lite"><i
+                class="github inverted outline icon"></i>
+            Github</a>
+    </nav>
+    <div class="form-modal">
+        <div class="form-toggle">
+            <button id="login-toggle" onclick="toggleLogin()">log in</button>
+            <button id="signup-toggle" onclick="toggleSignup()">sign up</button>
         </div>
-        <div class="ui vertical divider">
-            Or
+        <div id="login-form">
+            <form>
+                <input id="emailLogin" type="text" placeholder="Enter your email" />
+                <input id="passwordLogin" type="password" placeholder="Enter password" />
+                <button id="loginButton" type="button" class="btn login">login</button>
+            </form>
+        </div>
+        <div id="signup-form">
+            <form>
+                <input type="text" placeholder="Username" id="usernameSignup" required />
+                <input type="email" placeholder="Email" id="emailSignup" required />
+                <input type="password" placeholder="Password" id="passwordSignup" required />
+                <input type="file" placeholder="Profile Picture" id="ppSignup" required>
+                <button type="button" id="signupButton" class="btn signup">create account</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        function toggleSignup() {
+            document.getElementById("login-toggle").style.backgroundColor = "#fff";
+            document.getElementById("login-toggle").style.color = "#222";
+            document.getElementById("signup-toggle").style.backgroundColor = "rgba(9, 9, 121, 1)";
+            document.getElementById("signup-toggle").style.color = "#fff";
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("signup-form").style.display = "block";
+        }
+
+        function toggleLogin() {
+            document.getElementById("login-toggle").style.backgroundColor = "rgba(9, 9, 121, 1)";
+            document.getElementById("login-toggle").style.color = "#fff";
+            document.getElementById("signup-toggle").style.backgroundColor = "#fff";
+            document.getElementById("signup-toggle").style.color = "#222";
+            document.getElementById("signup-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        }
+    </script>
 </body>
 
 </html>

@@ -20,84 +20,116 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <style>
-        #mainHeading:hover {
-            text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-            color: rgb(252, 132, 132) !important
+        * {
+            box-sizing: border-box;
         }
 
-        li {
-            font-weight: bold;
+        body,
+        html {
+            font-family: 'Open Sans', sans-serif;
+            padding: 0;
+            margin: 0;
         }
-        body {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFK5IK4Ji-DUQMatyT--E7nIXv1iVXSjQUaQ&usqp=CAU');
+
+        .hero {
+            height: 90vh;
+            background: rgb(9, 9, 121);
+            background: linear-gradient(45deg, rgba(9, 9, 121, 1) 0%, rgba(11, 11, 159, 1) 100%);
+        }
+
+        nav {
+            height: 10vh;
+            padding: 20px 50px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 100px;
+        }
+
+        h1 {
+            margin: 0;
+            margin-top: 20px;
+            color: white;
+            text-align: center;
+            font-size: 5rem;
+        }
+
+        @supports (-webkit-text-stroke: 1px black) {
+            h1 span {
+                -webkit-text-stroke: 2px white;
+                color: transparent;
+            }
+        }
+
+        h3 {
+            margin: 0;
+            color: #00d9ff;
+            text-align: center;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
         }
 
         .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #023560;
-  color: white;
-  text-align: center;
-  height: 4.2%;
-}
+            height: 10vh;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
     </style>
 
 </head>
 
-<body style="background-color: #F5F5F5;">
+<body>
+    <div class="hero">
+        <nav>
+            <a href="/"><img src="./css/polling.svg" alt="Brand"></a>
 
-    <div class="ui segment placeholder"
-        style="margin: auto; width:50%; border:2px groove lightblue; margin-top:10px; text-align: center; margin-top: 20px">
-        <h1 id="mainHeading" style="color:blue; font-family: backslash; ">Creating interactive polls made easy!</h1>
-        <b>
-            <h1 style="color: blue; font-family: kettaFont; font-weight: bold">Get started in 2 easy steps ✌️</h1>
-        </b>
-        <!-- <ul>
-        <li style="color:green; font-family: Arial, Helvetica, sans-serif">Create an account</li>
-        <li style="color: green;  font-family: Arial, Helvetica, sans-serif">Create a poll</li>
-    </ul> -->
-    </div>
-
-
-    <!-- Now adding option for user to goto create poll or for voter to vote for a poll -->
-    <br>
-    <div class="ui placeholder segment" style="margin: 30px; margin-left: 10%; margin-right: 10%;">
-        <div class="ui two column very relaxed stackable grid">
-            <div class="column"><a href="login.html">
-                <div class="ui big button">
-                    <i class="edit outline icon"></i>
-                    Create a Poll
-                  </div></a>
-            </div>
-            <div class="middle aligned column"><a href="/otp.html">
-                <div class="ui big button">
-                    <i class="hand point up outline icon"></i>
-                    Give a Poll
-                </div></a>
-            </div>
-        </div>
-        <div class="ui vertical divider">
-            ||
+            <a target="_blank" href="https://github.com/1UC1F3R616/Mentimeter-Lite"><i
+                    class="github inverted outline icon"></i>
+                Github</a>
+        </nav>
+        <div class="logo"><img src="./css/polling.svg"></div>
+        <h1>Use the best online <span>Poll Maker</span></h1>
+        <h3>Creating interactive polls made easy!</h3>
+        <div class="btns">
+            <a class="ui big inverted basic button" href="login.html">
+                <i class="edit outline icon"></i>
+                Create a Poll
+            </a>
+            <a class="ui big button" href="/otp.html">
+                <i class="hand point up outline icon"></i>
+                Give a Poll
+            </a>
         </div>
     </div>
-    <footer class="ui raised footer"><h2 style="font-family: backslash;">say yes to Polls for feedback</h2></footer>
+    <div class="footer">
+        © 2020 Mentimeter-Lite
+    </div>
 
-    <!-- GitHub Corner logo -->
-    <a tabindex="0" href="https://github.com/1UC1F3R616/Mentimeter-Lite" rel="noopener noreferrer"
-    target="_blank" class="github-corner" aria-label="View source on GitHub">
-    <svg width="80" height="80" viewBox="0 0 250 250"
-        style="fill:#023560; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path
-            d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-            fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path
-            d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-            fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
 </body>
 
 </html>
