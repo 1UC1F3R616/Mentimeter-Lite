@@ -140,6 +140,36 @@ router.get('/events/questions/:otp', async (req, res) => {
     }
 })
 
+// View Previous events visuals using otp
+// router.get('/events/view/:otp', async (req, res) => {
+//     try {
+//         const event = await Event.findOne({otp: req.params.otp})
+        
+//         if (event == null)
+//             throw new Error('No such event')
+
+//         const questions = await Question.find({'event_id': event._id})
+//         let result = []
+
+//         for (let i=0; i<questions.length; i++) {
+//             options = await Option.find({'question_id': questions[i]._id})
+
+//             result[questions[i].number] = {'question': questions[i]}
+
+//             result[questions[i].number]['options'] = []
+//             for (let j=0; j<options.length; j++) {
+//                 // options.push(options[j])
+//                 result[questions[i].number]['options'].push(options[j])
+//             }
+//         }
+
+//     } catch (e) {
+//         res.status(400).json({ err: e.message })
+//     }
+// })
+
+
+
 ////////////////////////export///////////////////////
 module.exports = router;
 

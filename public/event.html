@@ -77,7 +77,7 @@
         myStorage = window.localStorage;
 
         if (myStorage.getItem('token') == null) {
-            window.location.href='/'
+            window.location.href = '/'
         }
 
         $(document).ready(() => {
@@ -120,8 +120,8 @@
 
 </head>
 
-<body> 
-<!-- <body style="background-color: #F5F5F5;"> -->
+<body>
+    <!-- <body style="background-color: #F5F5F5;"> -->
     <!-- Create Polling or click to view previously created polls -->
 
     <a href="/"><img src="./css/polling-blue.svg" alt="Brand"></a>
@@ -140,8 +140,8 @@
             </div>
             <div class="inline field">
                 <div class="ui checkbox">
-                    <input type="checkbox" tabindex="0" class="">
-                    <label>I agree to the terms and conditions</label>
+                    <!-- <input type="checkbox" tabindex="0" class="">
+                    <label>I agree to the terms and conditions</label> -->
                 </div>
             </div>
             <div class="ui submit button" id="createEventButton">Submit</div>
@@ -168,7 +168,7 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
-            for (let i=0; i<response.length; i++) {
+            for (let i = 0; i < response.length; i++) {
                 title = response[i]['name'];
                 description = response[i]['description'];
                 otp = response[i]['otp']
@@ -184,10 +184,12 @@
                 </div>
                 <br>
             </div>
+            <a href="/view.html?${otp}" target="_blank">
             <div class="ui bottom attached button">
-                <i class="hand point up outline icon"></i>
+                <i class="chart bar outline icon"></i>
                 ${otp}
             </div>
+        </a>
         </div>
     </td>
 </tr>`)
@@ -198,5 +200,3 @@
 </body>
 
 </html>
-
-

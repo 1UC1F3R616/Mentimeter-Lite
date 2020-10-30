@@ -50,6 +50,10 @@
         .container:hover {
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
         }
+        .submitButton:focus {
+            background-color:gray !important;    
+}
+        }
     </style>
 
 
@@ -83,7 +87,7 @@
     <div class="appendOptionHere" style="visibility: hidden"></div>
     <br>
     <button type="button" class="ui button secondary optionAdd"><i class="plus circle icon"></i>Add an Option</button>
-    <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
+    <button type="submit" class="ui button primary submitButton" onClick="this.disabled=true"><i class="mouse pointer icon"></i>Submit</button>
     <!-- <input type="submit" value="Submit" class="ui button primary"> -->
     <br><br>
     
@@ -95,6 +99,7 @@
                     event.preventDefault();
                     // Now we find question_number, statement, options from this item by looping all childnodes and finding appropriate class
                     console.log('A Question Form has been Submitted');
+                    console.log(item.childNodes)
                     // item = document.getElementById(item);
                     options = [] // .field.option
                     question_statement = '' // .field.statement
@@ -379,7 +384,7 @@
                 <br>
                 <button type="button" class="ui button secondary optionAdd"><i class="plus circle icon"></i>Add an
                     Option</button>
-                <button type="submit" class="ui button primary"><i class="mouse pointer icon"></i>Submit</button>
+                <button type="submit" class="ui button primary submitButton" onClick="this.disabled=true"><i class="mouse pointer icon"></i>Submit</button>
                 <!-- <input type="submit" value="Submit" class="ui button primary"> -->
                 <br><br>
 
