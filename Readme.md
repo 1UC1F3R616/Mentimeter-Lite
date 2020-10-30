@@ -28,3 +28,18 @@
 
 # Review Docs
 - [Review 2 Doc](https://docs.google.com/document/d/1UkgdpDO8cZnW2gMQuFtesWc3FRbXdEzb3TF4SeGlPxI/edit?usp=sharing)
+
+# Web App Screenshots
+![image](https://user-images.githubusercontent.com/41824020/97712909-19589200-1ae5-11eb-861c-fd153e01c8b4.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97713025-47d66d00-1ae5-11eb-88c7-e9b1bd3d905e.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97713150-73595780-1ae5-11eb-9dc6-07f399d679eb.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97713484-e95dbe80-1ae5-11eb-9803-768c80641ff6.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97713763-435e8400-1ae6-11eb-8f18-4f91d9e0f86b.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97713845-5e30f880-1ae6-11eb-8647-53a547cb090e.png)
+
+![image](https://user-images.githubusercontent.com/41824020/97714215-e1eae500-1ae6-11eb-8944-c2ed189069cc.png)
